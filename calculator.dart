@@ -44,7 +44,7 @@ class Calculator {
         exit(0);
       case null:
         print('No operation selected. Exiting...');
-        exit(0); 
+        exit(0);
       default:
         print('WRONG INPUT');
         break;
@@ -59,7 +59,7 @@ class Calculator {
       exit(0);
     }
     if (!validate(numberInput)) {
-      return inputNumber(); 
+      return inputNumber();
     }
     return int.parse(numberInput);
   }
@@ -85,10 +85,13 @@ class Calculator {
   }
 
   void div(var num) {
-    if (num == 0) {
-      print('Division by zero is not allowed!');
-    } else {
+    try {
+      if (num == 0) {
+        throw Exception('Division by zero');
+      }
       result /= num;
+    } catch (e) {
+      print('Error: ${e.toString()}');
     }
   }
 
